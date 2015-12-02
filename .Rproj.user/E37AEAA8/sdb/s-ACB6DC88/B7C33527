@@ -1,0 +1,18 @@
+{
+    "contents" : "library(maptools)\nlibrary(rgdal)\nlibrary(rgeos)\nlibrary(ggmap)\nlibrary(sp)\nlibrary(plyr)\nlibrary(ggplot2)\nlibrary(reshape2)\n#Load data\nwards <- readOGR(\"./LondonWards\", \"London_Ward_CityMerged\")\nLondonData <- read.csv(\"./LondonData.csv\", sep = \";\", stringsAsFactors = FALSE)\nLondonData <- LondonData[1:625, ]\nLondonData_fixed <- read.csv(\"./LondonAdditionalDataFixed.csv\", sep = \";\", stringsAsFactors = FALSE)\n#names(LondonData)[3] <- \"Wardcode\"\n#LD_names <- data.frame(names(LondonData))\n#LDF_names <- names(LondonData_fixed)\ndf <- merge(LondonData, LondonData_fixed, by = \"Wardcode\")\ndf[,33] <- as.numeric(df[,33])\ndf_names <- data.frame(names(df))\n#rm(LD_names, LDF_names, LondonData, LondonData_fixed)\n#hist_MedHHincom_bin3000\n##Analyse the variable \"MedHHIncom\" \ng <- ggplot(df, aes(x = MedHHIncom))\ng <- g + geom_histogram(colour = \"black\", fill = \"goldenrod1\", binwidth = 3000)\ng\ng <- ggplot(df, aes(x = MedHHIncom))\ng <- g + geom_histogram(colour = \"black\", fill = \"goldenrod1\", binwidth = 2000)\ng\nsumm_df <- summary(as.numeric(df[,33]))\ng <- ggplot(df, aes(x = MedHHIncom))\ng <- g + geom_histogram(colour = \"black\", fill = \"goldenrod1\", binwidth = 2000)\ng <- g + geom_vline(xintercept = summ_df[4], colour = \"red\")\ng <- g + geom_vline(xintercept = summ_df[3], colour = \"blue\")\ng\n\ng <- ggplot(df, aes(x = MedHHIncom, y = ..density..))\ng <- g + geom_histogram(colour = \"black\", fill = \"goldenrod1\", binwidth = 2000)\ng <- g + geom_vline(xintercept = summ_df[4], colour = \"red\")\ng <- g + geom_vline(xintercept = summ_df[3], colour = \"blue\")\ng <- g + geom_density(colour = \"red\", size = 1, adjust = 5)\ng\n##Transform all the variable in numeric\ndf2 <- LondonData[,4:71]\nfor(i in 1:68){\n    if(is.numeric(df2[,i])){\n    df2[,i] <- as.numeric(df2[,i])\n    print(class(df2[,i]))\n    }\n}\n##Plot a facet\ndf2.m <- melt(df2, id = \"Ward\")\nattach(df2.m)\nhist <- ggplot(df2.m, aes(x = value))\nhist <- hist + geom_histogram(aes(y = ..density..))\nhist <- hist + geom_density(colour=\"red\", size=1, adjust=1)\nhist + facet_wrap(~ variable, scales=\"free\")\ndetach(df2.m)\n##Plot a facet of the log\nattach(df2.m)\nhist <- ggplot(df2.m, aes(x = value))\nhist <- hist + geom_histogram(aes(y = ..density..))\nhist <- hist + geom_density(colour=\"red\", size=1, adjust=1)\nhist <- hist + facet_wrap(~ variable, scales=\"free\")\nhist\ndetach(df2.m)\n\n##Density of centroids and Kernel Density Estimation\nhist <- ggplot(df2.m)\n\n",
+    "created" : 1448462010252.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2132440518",
+    "id" : "B7C33527",
+    "lastKnownWriteTime" : 1449051026,
+    "path" : "~/CLOUD/C07_UCL_SmartCities/GIS/wk7/wk7.R",
+    "project_path" : "wk7.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

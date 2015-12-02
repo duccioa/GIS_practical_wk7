@@ -1,0 +1,25 @@
+{
+    "contents" : "",
+    "created" : 1448466751397.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "30564B05",
+    "lastKnownWriteTime" : 7008848344800718668,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "64pbdwzce3",
+        "caption" : "LondonData",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=LondonData&cache_key=64pbdwzce3",
+        "displayedObservations" : 625,
+        "environment" : "",
+        "object" : "LondonData",
+        "totalObservations" : 625,
+        "variables" : 75
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

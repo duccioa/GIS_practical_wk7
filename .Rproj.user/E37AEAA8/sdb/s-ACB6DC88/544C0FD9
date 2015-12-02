@@ -1,0 +1,25 @@
+{
+    "contents" : "",
+    "created" : 1448466931693.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "544C0FD9",
+    "lastKnownWriteTime" : -3458764513549511936,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "gemft5xigd",
+        "caption" : "df2",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=df2&cache_key=gemft5xigd",
+        "displayedObservations" : 625,
+        "environment" : "",
+        "object" : "df2",
+        "totalObservations" : 625,
+        "variables" : 68
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}
